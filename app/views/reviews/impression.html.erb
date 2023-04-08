@@ -1,0 +1,146 @@
+<html>
+<head>
+<style>
+  body {
+    background-color: #00FFFF;
+  }
+  </style>
+  </head>
+  
+  <body>
+  <div>
+  <div>
+    <h1>
+      Welcome!
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a Impression
+    </h2>
+
+    <form action="/insert_review" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="restaurant">
+          Restaurant
+        </label>
+
+        <input type ="text" id="restaurant_id_box" name="query_restaurant_id"> 
+
+      <div>
+        <label for="food_id_box">
+          Food
+        </label>
+
+        <input type="text" id="food_id_box" name="query_food_id">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <input type="text" id="body_box" name="query_body">
+      </div>
+
+      <button>
+        Create review
+      </button>
+    </form>
+
+    <p>
+      Begin <a href="/restaurants">Searching</a>
+    </p>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Restaurant
+        </th>
+
+        <th>
+          Food
+        </th>
+
+        <th>
+          Body
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_reviews.each do |a_review| %>
+      <tr>
+        <td>
+          <%= a_review.id %>
+        </td>
+
+        <td>
+          <%= a_review.user_id %>
+        </td>
+
+        <td>
+          <%= a_review.food_id %>
+        </td>
+
+        <td>
+          <%= a_review.body %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_review.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_review.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/reviews/<%= a_review.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+</body>
+</html>
